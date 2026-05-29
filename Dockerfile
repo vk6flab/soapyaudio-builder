@@ -29,10 +29,12 @@ WORKDIR /src
 RUN git clone https://github.com/Hamlib/Hamlib.git
 RUN git clone https://github.com/thestk/rtaudio.git
 RUN git clone https://github.com/pothosware/SoapySDR.git
-RUN git clone https://github.com/pothosware/SoapyAudio.git
+RUN git clone https://github.com/FallingAnvils/SoapyAudio.git
 
 # Build Hamlib
 WORKDIR /src/Hamlib
+# Checkout v4.7.0 - SoapyAudio is not (yet) compatible with the latest version of Hamlib
+RUN git checkout 4.7.0
 RUN ./bootstrap
 RUN ./configure
 RUN make -j$(nproc)
@@ -42,8 +44,6 @@ RUN ldconfig
 
 # Build rtaudio
 WORKDIR /src/rtaudio
-# Checkout v5.1.0
-RUN git checkout 5.1.0
 RUN ./autogen.sh
 RUN make -j$(nproc)
 RUN make install
@@ -59,7 +59,7 @@ RUN ldconfig
 
 # Build SoapyAudio
 WORKDIR /src/SoapyAudio/build
-RUN cmake ..
+RUN cmake -DUSE_HAMLIB=ON ..
 RUN make -j$(nproc)
 RUN make install
 RUN ldconfig
