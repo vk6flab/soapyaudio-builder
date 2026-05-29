@@ -9,8 +9,13 @@ The four repositories used are:
 * https://github.com/Hamlib/Hamlib.git
 * https://github.com/thestk/rtaudio.git
 * https://github.com/pothosware/SoapySDR.git
-* https://github.com/pothosware/SoapyAudio.git
+* https://github.com/FallingAnvils/SoapyAudio.git
 
+# Note
+
+The SoapyAudio repository is currently a forked version from the original available at the link below, because it does not (yet) support rtaudio > 5.1.0, or hamlib > 4.2 - I suspect that this will revert once available patches have been merged. I note that the fork looks like it has appropriate patches and merges, but the Kittens Clause applies.
+
+* https://github.com/pothosware/SoapyAudio.git
 
 # Tests
 
