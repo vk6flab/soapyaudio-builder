@@ -9,11 +9,13 @@ RUN apt-get -y upgrade
 RUN apt-get -y install \
 	autoconf \
 	automake \
+	avahi-daemon \
 	build-essential \
 	cmake \
 	g++ \
 	git \
 	libasound2-dev \
+	libavahi-client-dev \
 	libjack-jackd2-dev \
 	libpipewire-0.3-dev \
 	libpulse-dev \
@@ -30,6 +32,7 @@ RUN git clone https://github.com/Hamlib/Hamlib.git
 RUN git clone https://github.com/thestk/rtaudio.git
 RUN git clone https://github.com/pothosware/SoapySDR.git
 RUN git clone https://github.com/FallingAnvils/SoapyAudio.git
+RUN git clone https://github.com/pothosware/SoapyRemote.git
 
 # Build Hamlib
 WORKDIR /src/Hamlib
@@ -64,6 +67,13 @@ RUN make -j$(nproc)
 RUN make install
 RUN ldconfig
 
+# Build SoapyRemote
+WORKDIR /src/SoapyRemote/build
+RUN cmake ..
+RUN make -j$(nproc)
+RUN make install
+RUN ldconfig
+
 # Get all the artefacts in one place
 WORKDIR /src/Hamlib
 RUN make install DESTDIR=/tmp
@@ -75,7 +85,10 @@ WORKDIR /src/SoapySDR/build
 RUN make install DESTDIR=/tmp
 
 WORKDIR /src/SoapyAudio/build
-RUN make install DESTDIR=/tmp 
+RUN make install DESTDIR=/tmp
+
+WORKDIR /src/SoapyRemote/build
+RUN make install DESTDIR=/tmp
 
 # Put the artefacts together in a single .tgz file.
 WORKDIR /tmp

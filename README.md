@@ -4,12 +4,13 @@ To build SoapyAudio, SoapySDR, rtaudio and Hamlib requires several steps that ar
 
 You can use the `build.sh` script to build and then extract the build artefacts. This requires that you have `docker` installed.
 
-The four repositories used are:
+The five repositories used are:
 
 * https://github.com/Hamlib/Hamlib.git
 * https://github.com/thestk/rtaudio.git
 * https://github.com/pothosware/SoapySDR.git
 * https://github.com/FallingAnvils/SoapyAudio.git
+* https://github.com/pothosware/SoapyRemote.git
 
 
 # Note
@@ -23,7 +24,7 @@ The SoapyAudio repository is currently a forked version from the original availa
 
 This `Dockerfile` was tested on the following systems:
 
-* Debian 12.14 - amd64
+* Debian 12.14 - amd64, armv7l
 * Debian 13.4 - amd64
 
 
