@@ -66,16 +66,16 @@ RUN ldconfig
 
 # Get all the artefacts in one place
 WORKDIR /src/Hamlib
-RUN make install DESTDIR=/tmp/Hamlib
+RUN make install DESTDIR=/tmp
 
 WORKDIR /src/rtaudio
-RUN make install DESTDIR=/tmp/rtaudio
+RUN make install DESTDIR=/tmp
 
 WORKDIR /src/SoapySDR/build
-RUN make install DESTDIR=/tmp/SoapySDR
+RUN make install DESTDIR=/tmp
 
 WORKDIR /src/SoapyAudio/build
-RUN make install DESTDIR=/tmp/SoapyAudio
+RUN make install DESTDIR=/tmp 
 
 # Put the artefacts together in a single .tgz file.
 WORKDIR /tmp
