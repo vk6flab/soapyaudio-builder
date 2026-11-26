@@ -36,8 +36,8 @@ RUN git clone https://github.com/pothosware/SoapyRemote.git
 
 # Build Hamlib
 WORKDIR /src/Hamlib
-# Checkout v4.7.0 - SoapyAudio is not (yet) compatible with the latest version of Hamlib
-RUN git checkout 4.7.0
+# Checkout v4.7.2 - SoapyAudio is not (yet) compatible with the latest version of Hamlib
+RUN git checkout 4.7.2
 RUN ./bootstrap
 RUN ./configure
 RUN make -j$(nproc)
