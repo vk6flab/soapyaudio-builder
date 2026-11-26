@@ -31,7 +31,7 @@ WORKDIR /src
 RUN git clone https://github.com/Hamlib/Hamlib.git
 RUN git clone https://github.com/thestk/rtaudio.git
 RUN git clone https://github.com/pothosware/SoapySDR.git
-RUN git clone https://github.com/FallingAnvils/SoapyAudio.git
+RUN git clone https://github.com/pothosware/SoapyAudio.git
 RUN git clone https://github.com/pothosware/SoapyRemote.git
 
 # Build Hamlib

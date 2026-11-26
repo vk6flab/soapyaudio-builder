@@ -1,6 +1,6 @@
 # SoapyAudio Builder
 
-To build SoapyAudio, SoapySDR, rtaudio and Hamlib requires several steps that are documented in multiple places. This `Dockerfile` clones the four source repositories, then builds them. After the build completes, it creates a file called `/src/installed.tgz` that contains all the artefacts from the build.
+To build SoapyAudio, SoapySDR, rtaudio and Hamlib requires several steps that are documented in multiple places. This `Dockerfile` clones the five source repositories, then builds them. After the build completes, it creates a file called `/src/installed.tgz` that contains all the artefacts from the build.
 
 You can use the `build.sh` script to build and then extract the build artefacts. This requires that you have `docker` installed.
 
@@ -9,15 +9,8 @@ The five repositories used are:
 * https://github.com/Hamlib/Hamlib.git
 * https://github.com/thestk/rtaudio.git
 * https://github.com/pothosware/SoapySDR.git
-* https://github.com/FallingAnvils/SoapyAudio.git
-* https://github.com/pothosware/SoapyRemote.git
-
-
-# Note
-
-The SoapyAudio repository is currently a forked version from the original available at the link below, because it does not (yet) support rtaudio > 5.1.0, or hamlib > 4.2 - I suspect that this will revert once available patches have been merged. I note that the fork looks like it has appropriate patches and merges, but the Kittens Clause applies.
-
 * https://github.com/pothosware/SoapyAudio.git
+* https://github.com/pothosware/SoapyRemote.git
 
 
 # Tests
